@@ -4,7 +4,7 @@ angular.module('video-player')
   // TODO
     controller: function(youTube) {
       this.videos = window.exampleVideoData;
-      this.currentVideo = {};
+      this.currentVideo = this.videos[0];
       this.selectVideo = function(video) {
         this.currentVideo = video;
       }.bind(this);
@@ -14,9 +14,7 @@ angular.module('video-player')
         }.bind(this));
         console.log(this.videos);
       }.bind(this);
-    // this.getData = function(data) {
-    //   this.videos = data;
-    // }.bind(this);
+      this.searchResults = _.debounce(this.searchResults, 500);
     },
     templateUrl: 'src/templates/app.html'
   });
